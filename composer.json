@@ -1,0 +1,10 @@
+{
+	"require": {
+		"symfony/http-foundation": "2.6.*@dev",
+        "symfony/routing": "2.6.*@dev"
+	},
+
+    "autoload": {
+        "psr-0": {"Mvc\\": "includes/"}
+    }
+}
