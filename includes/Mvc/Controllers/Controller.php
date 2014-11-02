@@ -39,7 +39,7 @@ class Controller implements SetModel
         $this->model = new Model();
     }
 
-    public function get_home()
+    public function getHome()
     {
         $data = $this->model->getInfo();
         $this->view->render($tpl = 'home', $data);

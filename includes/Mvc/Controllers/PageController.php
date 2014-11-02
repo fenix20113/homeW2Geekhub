@@ -9,7 +9,7 @@ class PageController extends Mvc\Controllers\Controller
      * @param null $tpl
      */
 
-    public function Show($tpl = null)
+    public function show($tpl = null)
     {
         $data = $this->setModel()->getInfo();
         $this->view->render($tpl, $data);

@@ -38,7 +38,7 @@ class Route
                 require_once $file;
 
                 $actController = new Controller();
-                $actController->get_home();
+                $actController->getHome();
 
             }
         }

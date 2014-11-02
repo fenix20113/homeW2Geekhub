@@ -14,15 +14,6 @@ class View
      */
     public function render($html, $data = '')
     {
-        switch ($html) {
-            case 'news':
-                include "templates/news.php";
-                break;
-            case 'home':
-                include "templates/home.php";
-                break;
-            default:
-                include "templates/error.php";
-        }
+        include sprintf('templates/%s.php', $html);
     }
 } 
