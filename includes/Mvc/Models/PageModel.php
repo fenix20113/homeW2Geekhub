@@ -20,4 +20,9 @@ class PageModel extends Model
         $content = json_decode($json);
         return $content->items;
     }
+
+    public function create()
+    {
+    }
+
 }

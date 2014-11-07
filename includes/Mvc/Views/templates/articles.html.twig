@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+       {% block head %}
+           <title>Articles</title>
+           <link href="http://localhost/SymfonyComponents/includes/Mvc/Views/templates/css/style.css" rel="stylesheet"
+                 type="text/css"/>
+       {% endblock %}
+{% block body %}
+    <div><a href="/SymfonyComponents">Home</a></div>
+    <div>
+        {% for item in items %}
+            <h2>{{ item.title }}</h2>
+             <p>{{ item.text }}</p>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}

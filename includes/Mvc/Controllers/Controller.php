@@ -4,45 +4,69 @@ namespace Mvc\Controllers;
 
 use Mvc\Models\Model;
 use Mvc\Views\View;
+use Symfony\Component\HttpFoundation\Request;
 
-interface SetModel
-{
-    public function setModel();
-}
 
 /**
  * Class Controller
  * @package Mvc\Controllers
  */
-class Controller implements SetModel
+abstract class Controller
 {
     /**
      * @var View
      */
     protected $view;
+    /**
+     * @var model
+     */
     protected $model;
 
+    /**
+     * @var $request
+     */
+    protected $request;
 
-    public function __construct()
+    /**
+     * @var $twig
+     */
+    protected $twig;
+
+
+    public function __construct(Request $request)
     {
-        $this->setView();
-        $this->setModel();
+        $this->request = $request;
+
+//        $this->twig = $twig;
+//        $this->getView();
+//        $this->getModel();
     }
 
-    private function setView()
-    {
-        $this->view = new View();
-    }
 
-    public function setModel()
+    private function getModel()
     {
         $this->model = new Model();
     }
 
-    public function getHome()
+    private function getView()
     {
-        $data = $this->model->getInfo();
-        $this->view->render($tpl = 'home', $data);
+        $this->view = new View();
     }
+
+    /**
+     * @return mixed
+     */
+    abstract protected function setView();
+
+    /**
+     * @return mixed
+     */
+    abstract protected  function setModel();
+
+    /**
+     * @param null $tpl
+     * @return mixed
+     */
+    abstract public function show($tpl = null);
 
 }

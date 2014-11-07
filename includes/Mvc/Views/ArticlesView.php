@@ -1,21 +1,12 @@
 <?php
 
+
 namespace Mvc\Views;
 
-use Symfony\Component\HttpFoundation\Response;
 
-/**
- * Class View
- * @package Mvc\Views
- */
-class View
+class ArticlesView extends View
 {
-    /**
-     * @param $html
-     * @param string $data
-     * @return string|Response
-     */
-    public function render($html, $data = '')
+    public function render($html = '', $data = '')
     {
         \Twig_Autoloader::register();
         $loader = new \Twig_Loader_Filesystem(__DIR__ . '/templates');
@@ -32,6 +23,6 @@ class View
         }
 
         return $template->render(array('items' => $data));
-
     }
-}
+
+} 
