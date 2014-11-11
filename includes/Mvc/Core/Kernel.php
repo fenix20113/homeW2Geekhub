@@ -36,16 +36,14 @@ abstract class Kernel implements KernelInterface
         $routes->add('pages', new Route('page'));
         $routes->add('articles', new Route('articles'));
         $routes->add('article', new Route('articles/{id}'), ['id' => null]);
+        $routes->add('api/article', new Route('api/article'));
         $routes->add('home', new Route('/'));
         $routes->add('home1', new Route('/{name}'), array('name' => 'home'));
 
         $context = new RequestContext();
-        $matcher = new UrlMatcher($routes, $context);
         $context->fromRequest($request);
-
+        $matcher = new UrlMatcher($routes, $context);
         $PageController = new PageController($request);
-        $ArticlesController = new ArticlesController($request);
-
 
         try {
             $attributes = $matcher->match($request->getPathInfo());
@@ -54,20 +52,20 @@ abstract class Kernel implements KernelInterface
 
         }
 
-
         switch ($attributes['_route']) {
-            case 'article' :
-                $controller = new ArticleController($request);
-                break;
             case 'articles' :
                 $controller = new ArticlesController($request);
                 $show = $controller->show($attributes['_route']);
                 return new Response($show, Response::HTTP_OK);
                 break;
+            case 'api/article':
+                $cont = new ArticlesController($request);
+                return $cont->api($request);
+                break;
         }
 
-
         $show = $controller->show('home');
+
         if ($show) {
             return new Response($show, Response::HTTP_OK);
         } else {

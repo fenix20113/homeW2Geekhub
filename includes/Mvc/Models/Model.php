@@ -16,20 +16,18 @@ class Model
 
     public function __construct()
     {
-        $this->connection = $this->connect(new Config());
+        $this->connection = $this->connect();
     }
 
-    /**
-     * @param Config $config
-     * @return PDO
-     */
-    public function connect(Config $config)
+
+    public function connect()
     {
         try {
+          $con = new \MongoClient();
+          $db = $con->mvcdb;
+          return $db->createCollection('articles');
 
-          return new \PDO('mysql:host=' . $config->host . ';dbname=' . $config->db , $config->user ,  $config->password);
-
-        } catch (\PDOException $e) {
+        } catch (\MongoException $e) {
 
             echo 'error' . $e->getMessage() . '<br />';
             die();

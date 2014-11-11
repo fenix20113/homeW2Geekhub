@@ -6,31 +6,51 @@ namespace Mvc\Controllers;
 use Mvc\Models\ArticlesModel;
 use Mvc\Models\Model;
 use Mvc\Views\ArticlesView;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ArticlesController extends Controller
 {
-    protected $articleModel;
+    /**
+     * @var
+     */
+    protected $model;
 
+    /**
+     * @var
+     */
+    protected $view;
+
+    /**
+     * @param Request $request
+     */
     public function __construct(Request $request)
     {
+        $this->setModel();
+        $this->setView();
+    }
 
-        parent::__construct($request);
-
+    /**
+     * @param Request $request
+     */
+    public function api(Request $request)
+    {
         switch ($request->getMethod()) {
             case 'GET':
             default:
-              //  $this->getItem($request);
+                //  $this->getItem($request);
                 break;
             case 'POST':
-                $this->createItem();
+                return $this->createItem($request);
                 break;
             case 'DELETE':
-            //    $this->deleteItem($request->query->get('id'));
+
+               return $this->deleteItem($request);
+//                    $this->deleteItem($request->query->get('id'));
                 break;
             case 'PUT':
-            //    $this->updateItem($request);
+                //    $this->updateItem($request);
         }
     }
 
@@ -39,9 +59,7 @@ class ArticlesController extends Controller
      */
     protected function setView()
     {
-        $view = new ArticlesView();
-
-        return $this->articleModel = $view;
+        $this->view = new ArticlesView();
     }
 
     /**
@@ -49,9 +67,7 @@ class ArticlesController extends Controller
      */
     protected function setModel()
     {
-
-
-       return new ArticlesModel();
+        $this->model = new ArticlesModel();
     }
 
     /**
@@ -60,24 +76,37 @@ class ArticlesController extends Controller
      */
     public function show($tpl = null)
     {
-        $model = $this->setModel();
-
-//        $model->create();
-        $data = $model->getAll();
-        return $this->setView()->render($tpl, $data);
+        $data = $this->model->getAll();
+        return $this->view->render($tpl, $data->find());
     }
 
 
+    public function createItem(Request $request)
+    {
+        try {
+            $create = $this->model->create($request);
+            $jsonResponse = new JsonResponse();
+            return $jsonResponse->setData($create);
+        } catch (\MongoException $e) {
+            return new Response($e->getMessage(), Response::HTTP_METHOD_NOT_ALLOWED);
+        }
 
-    public function createItem()
+    }
+
+    public function deleteItem(Request $request)
     {
 
-       $model = $this->setModel();
-       $create = $model->create();
-echo '<pre>';
-var_dump($create);
-echo '</pre>';
-//exit;
-        return new Response($create);
+        try {
+            $delete = $this->model->delete($request);
+            $jsonResponse = new JsonResponse();
+            return $jsonResponse->setData($delete);
+        } catch (\MongoException $e) {
+            return new Response($e->getMessage(), Response::HTTP_METHOD_NOT_ALLOWED);
+        }
+
+
+
+
+        return new Response($delete);
     }
-} 
+}

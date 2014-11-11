@@ -7,5 +7,8 @@
 
     "autoload": {
         "psr-0": {"Mvc\\": "includes/"}
+    },
+    "autoload-dev": {
+        "psr-0": {"Mvc\\": "test/"}
     }
 }

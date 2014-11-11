@@ -14,8 +14,6 @@ class PageController extends Controller
     public function __construct(Request $request)
     {
 
-        parent::__construct($request);
-
         switch ($request->getMethod()) {
             case 'GET':
             default:

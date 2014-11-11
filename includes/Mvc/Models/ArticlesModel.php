@@ -3,6 +3,8 @@
 namespace Mvc\Models;
 
 
+use Symfony\Component\HttpFoundation\Request;
+
 class ArticlesModel extends Model
 {
 
@@ -11,16 +13,33 @@ class ArticlesModel extends Model
      */
     public function getAll()
     {
-        $db = $this->connection;
-        $res = $db->query('SELECT * from articles');
-        return $res->fetchAll();
+        return $this->connection->articles;
     }
 
-    public function create()
+    /**
+     * Add new Article
+     * @param Request $request
+     * @return mixed
+     */
+    public function create(Request $request)
     {
-        $db = $this->connection;
-        $db->exec("INSERT INTO  `articles` (`title`, `text`, `timestamp`)
-            VALUES ('Courses - Tutorials', 'education', '2316546')");
-        return $db->lastInsertId();
+
+        return $this->getAll()->insert(
+            [
+                "title" => $request->request->get('title'),
+                "description" => $request->request->get('description')
+            ]
+        );
+    }
+
+    /**
+     * Delete Article from db
+     * @param Request $request
+     * @return mixed
+     */
+    public function delete(Request $request)
+    {
+
+        return $this->getAll()->remove(array("title" => ""));
     }
 } 

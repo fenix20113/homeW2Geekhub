@@ -4,21 +4,21 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9f87b0d2d0b5878c6605ba70a7b099d0",
+    "hash": "f2bb955079a1778f06bcb962b04c99a2",
     "packages": [
         {
             "name": "symfony/http-foundation",
-            "version": "dev-master",
+            "version": "2.6.x-dev",
             "target-dir": "Symfony/Component/HttpFoundation",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "296df31964a95e880a83f8c6afe84a18001751ee"
+                "reference": "8d6ab2d294400bb03e33565a1fd284bba87e932c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/296df31964a95e880a83f8c6afe84a18001751ee",
-                "reference": "296df31964a95e880a83f8c6afe84a18001751ee",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/8d6ab2d294400bb03e33565a1fd284bba87e932c",
+                "reference": "8d6ab2d294400bb03e33565a1fd284bba87e932c",
                 "shasum": ""
             },
             "require": {
@@ -57,21 +57,21 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-02 00:37:13"
+            "time": "2014-11-04 14:29:39"
         },
         {
             "name": "symfony/routing",
-            "version": "dev-master",
+            "version": "v2.6.0-BETA1",
             "target-dir": "Symfony/Component/Routing",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Routing.git",
-                "reference": "162615e0ae57315f88258dc7cdd35d9ef2f561cb"
+                "reference": "f0bb6f818f9a7ece41c7dfe14e08b13c2de55b0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Routing/zipball/162615e0ae57315f88258dc7cdd35d9ef2f561cb",
-                "reference": "162615e0ae57315f88258dc7cdd35d9ef2f561cb",
+                "url": "https://api.github.com/repos/symfony/Routing/zipball/f0bb6f818f9a7ece41c7dfe14e08b13c2de55b0c",
+                "reference": "f0bb6f818f9a7ece41c7dfe14e08b13c2de55b0c",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2014-10-26 20:31:09"
+            "time": "2014-11-03 19:16:49"
         },
         {
             "name": "twig/twig",

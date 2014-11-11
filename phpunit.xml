@@ -1,0 +1,10 @@
+<!-- /phpunit.xml.dist -->
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit bootstrap="./vendor/autoload.php">
+    <testsuites>
+        <testsuite name="The project's test suite">
+            <directory>./test/includes/Mvc/Models</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>
