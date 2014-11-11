@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+       {% block head %}
+           <title>Latest News</title>
+           <link href="http://localhost/SymfonyComponents/includes/Mvc/Views/templates/css/style.css" rel="stylesheet"
+                 type="text/css"/>
+       {% endblock %}
+{% block body %}
+    <div><a href="/SymfonyComponents">Home</a></div>
+    <div>
+        {% for item in items %}
+            <h2><a href='{{ item.url }}'>{{ item.title }}</a></h2>
+
+            <div><span>Posted ago: </span>{{ item.postedAgo }}</div>
+            <div><span>Posted by: </span>{{ item.postedBy }}</div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}
