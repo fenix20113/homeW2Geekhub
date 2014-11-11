@@ -29,7 +29,8 @@ class Model
 
         } catch (\MongoException $e) {
 
-            echo 'error' . $e->getMessage() . '<br />';
+            echo 'error: ' . $e->getMessage() . '<br />';
+            echo 'error: ' . $e->getFile() . '<br />';
             die();
 
         }

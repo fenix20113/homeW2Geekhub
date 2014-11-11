@@ -62,6 +62,12 @@ abstract class Kernel implements KernelInterface
                 $cont = new ArticlesController($request);
                 return $cont->api($request);
                 break;
+            case 'page':
+                $cont = new PageController($request);
+                $show = $cont->show($attributes['name']);
+                return new Response($show, Response::HTTP_OK);
+                break;
+
         }
 
         $show = $controller->show('home');

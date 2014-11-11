@@ -1,14 +1,16 @@
 {
-    "require": {
-        "symfony/http-foundation": "2.6.*@dev",
-        "symfony/routing": "2.6.*@dev",
-        "twig/twig": "~1.0"
-    },
-
-    "autoload": {
-        "psr-0": {"Mvc\\": "includes/"}
-    },
-    "autoload-dev": {
-        "psr-0": {"Mvc\\": "test/"}
+  "require": {
+    "symfony/http-foundation": "2.6.*@dev",
+    "symfony/routing": "2.6.*@dev",
+    "twig/twig": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.3.*"
+  },
+  "autoload": {
+    "psr-0": {
+      "Mvc\\": "includes/",
+      "includes\\": "test/"
     }
+  }
 }

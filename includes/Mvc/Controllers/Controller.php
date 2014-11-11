@@ -42,7 +42,6 @@ abstract class Controller
 //        $this->getModel();
     }
 
-
     private function getModel()
     {
         $this->model = new Model();

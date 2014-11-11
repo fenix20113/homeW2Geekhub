@@ -3,6 +3,7 @@
 namespace Mvc\Controllers;
 
 use Mvc\Models\PageModel;
+use Mvc\Views\View;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -11,27 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 class PageController extends Controller
 {
 
-    public function __construct(Request $request)
-    {
-
-        switch ($request->getMethod()) {
-            case 'GET':
-            default:
-                $this->getItem($request);
-                break;
-            case 'POST':
-                $this->createItem();
-                break;
-            case 'DELETE':
-                $this->deleteItem($request->query->get('id'));
-                break;
-            case 'PUT':
-                $this->updateItem($request);
-        }
-
-    }
-
-
     /**
      * @param null $tpl
      * @return mixed|string|\Symfony\Component\HttpFoundation\Response
@@ -39,7 +19,7 @@ class PageController extends Controller
     public function show($tpl = null)
     {
         $data = $this->setModel()->getInfo();
-        return $this->view->render($tpl, $data);
+        return $this->setView()->render($tpl, $data);
     }
 
     /**
@@ -47,7 +27,7 @@ class PageController extends Controller
      */
     protected function setView()
     {
-
+        return new View();
     }
 
     /**

@@ -33,6 +33,7 @@ class ArticlesController extends Controller
 
     /**
      * @param Request $request
+     * @return JsonResponse|Response
      */
     public function api(Request $request)
     {
@@ -42,12 +43,12 @@ class ArticlesController extends Controller
                 //  $this->getItem($request);
                 break;
             case 'POST':
+
                 return $this->createItem($request);
                 break;
             case 'DELETE':
 
                return $this->deleteItem($request);
-//                    $this->deleteItem($request->query->get('id'));
                 break;
             case 'PUT':
                 //    $this->updateItem($request);
